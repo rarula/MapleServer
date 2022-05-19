@@ -2,3 +2,6 @@
 /test
 /src
 tsconfig.json
+dprint.json
+.eslintrc.json
+.editorconfig

@@ -2,8 +2,8 @@
     "name": "maple-server",
     "version": "0.1.0",
     "description": "Enhance the vanilla server for Minecraft: Java Edition.",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
     "scripts": {
         "build": "tsc",
         "prepare": "npm run build",

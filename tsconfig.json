@@ -10,15 +10,13 @@
         "forceConsistentCasingInFileNames": true,
 
         "declaration": true,
-        "sourceMap": true,
         "baseUrl": ".",
         "paths": {
             "properties": ["src/@types/properties"]
         },
-        "outDir": "./dist",
+        "outDir": "./lib",
     },
     "include": [
-        "src/**/*.ts",
-        "test/**/*.test.ts"
+        "src/**/*.ts"
     ]
 }
