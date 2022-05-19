@@ -31,7 +31,7 @@ export class MapleWorld {
     }
 
     /**
-     * Get a list of all players currently in this world.
+     * Gets a list of all currently logged in players.
      * @returns {Promise<MaplePlayer[]>}
      */
     public async getOnlinePlayers(): Promise<MaplePlayer[]> {
@@ -50,7 +50,7 @@ export class MapleWorld {
      * Send a command to the server.
      * The command is executed by Rcon, not by the server.
      * @param command Command to send to the server. Don't prefix the command with /.
-     * @returns {Promise<string>} Response to the command from the server.
+     * @returns {Promise<string>} Response from the server.
      */
     public async sendCommand(command: string): Promise<string> {
         return await this.rconClient.send(`/${command}`);

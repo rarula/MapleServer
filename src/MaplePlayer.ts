@@ -23,7 +23,7 @@ export class MaplePlayer {
     /**
      * Make the player execute the command.
      * @param command Command to execute. Don't prefix commands with /.
-     * @returns {Promise<string>} Response to a command from the server.
+     * @returns {Promise<string>} Response from the server.
      */
     public async sendCommand(command: string): Promise<string> {
         return await this.world.sendCommand(`execute as ${this.originalName} at @s run ${command}`);
