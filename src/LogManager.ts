@@ -26,9 +26,9 @@ export function parse(logs: Buffer, server: MapleServer, emitter: EventEmitter, 
     }).split('\n');
 
     lines.forEach(async (line) => {
-        if (line) {
-            process.stdout.write(line);
-        }
+        if (!line) return;
+        process.stdout.write(line);
+
         const contents = line.match(REGEX_CONTENT);
         if (contents) {
             const content = contents[1];
