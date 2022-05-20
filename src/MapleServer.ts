@@ -9,8 +9,7 @@ import TypedEmitter from 'typed-emitter';
 import { parse } from './LogManager';
 import { MapleWorld } from './MapleWorld';
 import { Properties } from './types/Properties';
-import { ServerEvents } from './types/ServerEvents';
-import { ServerOptions } from './types/ServerOptions';
+import { ServerEvents, ServerOptions } from './types/Server';
 
 export class MapleServer {
     private emitter = new EventEmitter() as TypedEmitter<ServerEvents>;

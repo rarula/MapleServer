@@ -1,130 +1,153 @@
-export interface Level {
-    readonly Data: {
-        readonly allowCommands: boolean;
-        readonly BorderCenterX: number;
-        readonly BorderCenterZ: number;
-        readonly BorderDamagePerBlock: number;
-        readonly BorderSafeZone: number;
-        readonly BorderSize: number;
-        readonly BorderSizeLerpTarget: number;
-        readonly BorderSizeLerpTime: number;
-        readonly BorderWarningBlocks: number;
-        readonly BorderWarningTime: number;
-        readonly clearWeatherTime: number;
-        readonly CustomBossEvents: {
-            readonly [bossbarId: string]: {
-                readonly Color: string;
-                readonly CreateWorldFog: boolean;
-                readonly DarkenScreen: boolean;
-                readonly Max: number;
-                readonly Name: string;
-                readonly Overlay: string;
-                readonly PlayBossMusic: boolean;
-                readonly Players: Int32Array[];
-                readonly Value: number;
-                readonly Visible: boolean;
-            };
-        };
-        readonly DataPacks: {
-            readonly Disabled: string[];
-            readonly Enabled: string[];
-        };
-        readonly DataVersion: number;
-        readonly DayTime: number;
-        readonly Difficulty: number;
-        readonly DifficultyLocked: boolean;
-        readonly DragonFight: {
-            readonly Dragon: Int32Array;
-            readonly DragonKilled: boolean;
-            readonly ExitPortalLocation: {
-                readonly X: number;
-                readonly Y: number;
-                readonly Z: number;
-            };
-            readonly Gateways: number[];
-            readonly NeedsStateScanning: boolean;
-            readonly PreviouslyKilled: boolean;
-        };
-        readonly GameRules: {
-            readonly announceAdvancements: string;
-            readonly commandBlockOutput: string;
-            readonly disableElytraMovementCheck: string;
-            readonly disableRaids: string;
-            readonly doDaylightCycle: string;
-            readonly doEntityDrops: string;
-            readonly doFireTick: string;
-            readonly doImmediateRespawn: string;
-            readonly doInsomnia: string;
-            readonly doLimitedCrafting: string;
-            readonly doMobLoot: string;
-            readonly doMobSpawning: string;
-            readonly doPatrolSpawning: string;
-            readonly doTileDrops: string;
-            readonly doTraderSpawning: string;
-            readonly doWeatherCycle: string;
-            readonly drowningDamage: string;
-            readonly fallDamage: string;
-            readonly fireDamage: string;
-            readonly forgiveDeadPlayers: string;
-            readonly freezeDamage: string;
-            readonly keepInventory: string;
-            readonly logAdminCommands: string;
-            readonly maxCommandChainLength: string;
-            readonly maxEntityCramming: string;
-            readonly mobGriefing: string;
-            readonly naturalRegeneration: string;
-            readonly playersSleepingPercentage: string;
-            readonly randomTickSpeed: string;
-            readonly reducedDebugInfo: string;
-            readonly sendCommandFeedback: string;
-            readonly showDeathMessages: string;
-            readonly spawnRadius: string;
-            readonly spectatorsGenerateChunks: string;
-            readonly universalAnger: string;
-        };
-        readonly GameType: number;
-        readonly hardcore: boolean;
-        readonly initialized: boolean;
-        readonly LastPlayed: number;
-        readonly LevelName: string;
-        readonly raining: boolean;
-        readonly rainTime: number;
-        readonly ScheduledEvents: ScheduledEvent[];
-        readonly ServerBrands: string[];
-        readonly SpawnAngle: number;
-        readonly SpawnX: number;
-        readonly SpawnY: number;
-        readonly SpawnZ: number;
-        readonly thundering: boolean;
-        readonly thunderTime: number;
-        readonly Time: number;
-        readonly version: number;
-        readonly Version: {
-            readonly Id: number;
-            readonly Name: string;
-            readonly Series: string;
-            readonly Snapshot: boolean;
-        };
-        readonly WanderingTraderId: Int32Array;
-        readonly WanderingTraderSpawnChance: number;
-        readonly WanderingTraderSpawnDelay: number;
-        readonly WasModded: boolean;
-        readonly WorldGenSettings: {
-            readonly bonus_chest: boolean;
-            readonly dimensions: {
-                readonly [dimensionId: string]: object;
-            };
-            readonly generate_features: boolean;
-            readonly seed: number;
-        };
-    };
-}
+// root
+export type Level = Readonly<{
+    Data: Data;
+}>;
 
-interface ScheduledEvent {
-    readonly Callback: {
-        readonly Name: string;
-        readonly Type: string;
-    };
-    readonly Name: string;
-    readonly TriggerTime: number;
-}
+// root.Data
+type Data = Readonly<{
+    allowCommands: boolean;
+    BorderCenterX: number;
+    BorderCenterZ: number;
+    BorderDamagePerBlock: number;
+    BorderSafeZone: number;
+    BorderSize: number;
+    BorderSizeLerpTarget: number;
+    BorderSizeLerpTime: number;
+    BorderWarningBlocks: number;
+    BorderWarningTime: number;
+    clearWeatherTime: number;
+    CustomBossEvents: CustomBossEvents;
+    DataPacks: DataPacks;
+    DataVersion: number;
+    DayTime: number;
+    Difficulty: number;
+    DifficultyLocked: boolean;
+    DragonFight: DragonFight;
+    GameRules: GameRules;
+    GameType: number;
+    hardcore: boolean;
+    initialized: boolean;
+    LastPlayed: number;
+    LevelName: string;
+    raining: boolean;
+    rainTime: number;
+    ScheduledEvents: ScheduledEvent[];
+    ServerBrands: Readonly<string[]>;
+    SpawnAngle: number;
+    SpawnX: number;
+    SpawnY: number;
+    SpawnZ: number;
+    thundering: boolean;
+    thunderTime: number;
+    Time: number;
+    version: number;
+    Version: Version;
+    WanderingTraderId: Readonly<Int32Array>;
+    WanderingTraderSpawnChance: number;
+    WanderingTraderSpawnDelay: number;
+    WasModded: boolean;
+    WorldGenSettings: WorldGenSettings;
+}>;
+
+// root.Data.CustomBossEvents
+type CustomBossEvents = Readonly<{
+    [bossbarId: string]: Readonly<{
+        Color: string;
+        CreateWorldFog: boolean;
+        DarkenScreen: boolean;
+        Max: number;
+        Name: string;
+        Overlay: string;
+        PlayBossMusic: boolean;
+        Players: Readonly<Int32Array[]>;
+        Value: number;
+        Visible: boolean;
+    }>;
+}>;
+
+// root.Data.DataPacks
+type DataPacks = Readonly<{
+    Disabled: Readonly<string[]>;
+    Enabled: Readonly<string[]>;
+}>;
+
+// root.Data.DragonFight
+type DragonFight = Readonly<{
+    Dragon: Readonly<Int32Array[]>;
+    DragonKilled: boolean;
+    ExitPortalLocation: Readonly<{
+        X: number;
+        Y: number;
+        Z: number;
+    }>;
+    Gateways: Readonly<number[]>;
+    NeedsStateScanning: boolean;
+    PreviouslyKilled: boolean;
+}>;
+
+// root.Data.GameRules
+type GameRules = Readonly<{
+    announceAdvancements: string;
+    commandBlockOutput: string;
+    disableElytraMovementCheck: string;
+    disableRaids: string;
+    doDaylightCycle: string;
+    doEntityDrops: string;
+    doFireTick: string;
+    doImmediateRespawn: string;
+    doInsomnia: string;
+    doLimitedCrafting: string;
+    doMobLoot: string;
+    doMobSpawning: string;
+    doPatrolSpawning: string;
+    doTileDrops: string;
+    doTraderSpawning: string;
+    doWeatherCycle: string;
+    drowningDamage: string;
+    fallDamage: string;
+    fireDamage: string;
+    forgiveDeadPlayers: string;
+    freezeDamage: string;
+    keepInventory: string;
+    logAdminCommands: string;
+    maxCommandChainLength: string;
+    maxEntityCramming: string;
+    mobGriefing: string;
+    naturalRegeneration: string;
+    playersSleepingPercentage: string;
+    randomTickSpeed: string;
+    reducedDebugInfo: string;
+    sendCommandFeedback: string;
+    showDeathMessages: string;
+    spawnRadius: string;
+    spectatorsGenerateChunks: string;
+    universalAnger: string;
+}>;
+
+// root.Data.ScheduledEvent
+type ScheduledEvent = Readonly<{
+    Callback: Readonly<{
+        Name: string;
+        Type: string;
+    }>;
+    Name: string;
+    TriggerTime: number;
+}>;
+
+// root.Data.Version
+type Version = Readonly<{
+    Id: number;
+    Name: string;
+    Series: string;
+    Snapshot: boolean;
+}>;
+
+// root.Data.WorldGenSettings
+type WorldGenSettings = Readonly<{
+    bonus_chest: boolean;
+    dimensions: Readonly<{
+        [dimensionId: string]: Readonly<object>;
+    }>;
+    generate_features: boolean;
+    seed: number;
+}>;
