@@ -3,20 +3,14 @@ import EventEmitter from 'events';
 import { readFileSync } from 'fs';
 import path from 'path';
 import properties from 'properties';
-import { Rcon, RconOptions } from 'rcon-client';
+import { Rcon } from 'rcon-client';
 import TypedEmitter from 'typed-emitter';
 
 import { parse } from './LogManager';
 import { MapleWorld } from './MapleWorld';
 import { Properties } from './types/Properties';
 import { ServerEvents } from './types/ServerEvents';
-
-export interface ServerOptions {
-    rconClient: RconOptions;
-    server: {
-        directoryPath: string;
-    };
-}
+import { ServerOptions } from './types/ServerOptions';
 
 export class MapleServer {
     private emitter = new EventEmitter() as TypedEmitter<ServerEvents>;

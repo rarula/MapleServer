@@ -18,123 +18,123 @@ type Gamemode =
     | 'adventure'
     | 'spectator';
 
-export interface Properties {
-    readonly 'allow-flight':
+export type Properties = Readonly<{
+    'allow-flight':
         | boolean
         | null
         | undefined;
-    readonly 'allow-nether':
+    'allow-nether':
         | boolean
         | null
         | undefined;
-    readonly 'broadcast-console-to-ops':
+    'broadcast-console-to-ops':
         | boolean
         | null
         | undefined;
-    readonly 'broadcast-rcon-to-ops':
+    'broadcast-rcon-to-ops':
         | boolean
         | null
         | undefined;
-    readonly difficulty:
+    'difficulty':
         | Difficulty
         | null
         | undefined;
-    readonly 'enable-command-block':
+    'enable-command-block':
         | boolean
         | null
         | undefined;
-    readonly 'enable-jmx-monitoring':
+    'enable-jmx-monitoring':
         | boolean
         | null
         | undefined;
-    readonly 'enable-rcon':
+    'enable-rcon':
         | boolean
         | null
         | undefined;
-    readonly 'sync-chunk-writes':
+    'sync-chunk-writes':
         | boolean
         | null
         | undefined;
-    readonly 'enable-status':
+    'enable-status':
         | boolean
         | null
         | undefined;
-    readonly 'enable-query':
+    'enable-query':
         | boolean
         | null
         | undefined;
-    readonly 'entity-broadcast-range-percentage':
+    'entity-broadcast-range-percentage':
         | number
         | null
         | undefined;
-    readonly 'force-gamemode':
+    'force-gamemode':
         | boolean
         | null
         | undefined;
-    readonly 'function-permission-level':
+    'function-permission-level':
         | 1
         | 2
         | 3
         | 4
         | null
         | undefined;
-    readonly gamemode:
+    'gamemode':
         | Gamemode
         | null
         | undefined;
-    readonly 'generate-structures':
+    'generate-structures':
         | boolean
         | null
         | undefined;
-    readonly 'generator-settings':
+    'generator-settings':
         | object
         | null
         | undefined;
-    readonly hardcore:
+    'hardcore':
         | boolean
         | null
         | undefined;
-    readonly 'level-name':
+    'level-name':
         | string
         | null
         | undefined;
-    readonly 'level-seed':
+    'level-seed':
         | string
         | null
         | undefined;
-    readonly 'level-type':
+    'level-type':
         | string
         | null
         | undefined;
-    readonly 'max-chained-neighbor-updates':
+    'max-chained-neighbor-updates':
         | number
         | null
         | undefined;
-    readonly 'max-players':
+    'max-players':
         | number
         | null
         | undefined;
-    readonly 'max-tick-time':
+    'max-tick-time':
         | number
         | null
         | undefined;
-    readonly 'max-world-size':
+    'max-world-size':
         | number
         | null
         | undefined;
-    readonly motd:
+    'motd':
         | string
         | null
         | undefined;
-    readonly 'network-compression-threshold':
+    'network-compression-threshold':
         | number
         | null
         | undefined;
-    readonly 'online-mode':
+    'online-mode':
         | boolean
         | null
         | undefined;
-    readonly 'op-permission-level':
+    'op-permission-level':
         | 0
         | 1
         | 2
@@ -142,100 +142,100 @@ export interface Properties {
         | 4
         | null
         | undefined;
-    readonly 'player-idle-timeout':
+    'player-idle-timeout':
         | number
         | null
         | undefined;
-    readonly 'prevent-proxy-connections':
+    'prevent-proxy-connections':
         | boolean
         | null
         | undefined;
-    readonly pvp:
+    'pvp':
         | boolean
         | null
         | undefined;
-    readonly 'query.port':
+    'query.port':
         | number
         | null
         | undefined;
-    readonly 'rate-limit':
+    'rate-limit':
         | number
         | null
         | undefined;
-    readonly 'rcon.password':
+    'rcon.password':
         | string
         | null
         | undefined;
-    readonly 'rcon.port':
+    'rcon.port':
         | number
         | null
         | undefined;
-    readonly 'resource-pack':
+    'resource-pack':
         | string
         | null
         | undefined;
-    readonly 'resource-pack-prompt':
+    'resource-pack-prompt':
         | string
         | null
         | undefined;
-    readonly 'resource-pack-sha1':
+    'resource-pack-sha1':
         | string
         | null
         | undefined;
-    readonly 'require-resource-pack':
+    'require-resource-pack':
         | boolean
         | null
         | undefined;
-    readonly 'server-ip':
+    'server-ip':
         | string
         | null
         | undefined;
-    readonly 'server-port':
+    'server-port':
         | number
         | null
         | undefined;
-    readonly 'simulation-distance':
+    'simulation-distance':
         | number
         | null
         | undefined;
-    readonly 'snooper-enabled':
+    'snooper-enabled':
         | boolean
         | null
         | undefined;
-    readonly 'spawn-animals':
+    'spawn-animals':
         | boolean
         | null
         | undefined;
-    readonly 'spawn-monsters':
+    'spawn-monsters':
         | boolean
         | null
         | undefined;
-    readonly 'spawn-npcs':
+    'spawn-npcs':
         | boolean
         | null
         | undefined;
-    readonly 'spawn-protection':
+    'spawn-protection':
         | number
         | null
         | undefined;
-    readonly 'text-filtering-config':
+    'text-filtering-config':
         | unknown
         | null
         | undefined;
-    readonly 'use-native-transport':
+    'use-native-transport':
         | boolean
         | null
         | undefined;
-    readonly 'view-distance':
+    'view-distance':
         | number
         | null
         | undefined;
-    readonly 'white-list':
+    'white-list':
         | boolean
         | null
         | undefined;
-    readonly 'enforce-whitelist':
+    'enforce-whitelist':
         | boolean
         | null
         | undefined;
-}
+}>;
