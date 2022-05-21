@@ -1,13 +1,4 @@
-import { RconOptions } from 'rcon-client';
-
-import { MaplePlayer } from '../MaplePlayer';
-
-export type ServerOptions = {
-    rconClient: RconOptions;
-    server: {
-        directoryPath: string;
-    };
-};
+import { MaplePlayer } from '../player/MaplePlayer';
 
 export type ServerEvents = {
     // プレイヤーがチャットを送信した時に呼び出されるイベント
