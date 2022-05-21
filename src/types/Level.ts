@@ -1,9 +1,8 @@
-// root
 export type Level = Readonly<{
     Data: Data;
 }>;
 
-// root.Data
+// Level.Data
 type Data = Readonly<{
     allowCommands: boolean;
     BorderCenterX: number;
@@ -49,7 +48,7 @@ type Data = Readonly<{
     WorldGenSettings: WorldGenSettings;
 }>;
 
-// root.Data.CustomBossEvents
+// Level.Data.CustomBossEvents
 type CustomBossEvents = Readonly<{
     [bossbarId: string]: Readonly<{
         Color: string;
@@ -65,13 +64,13 @@ type CustomBossEvents = Readonly<{
     }>;
 }>;
 
-// root.Data.DataPacks
+// Level.Data.DataPacks
 type DataPacks = Readonly<{
     Disabled: Readonly<string[]>;
     Enabled: Readonly<string[]>;
 }>;
 
-// root.Data.DragonFight
+// Level.Data.DragonFight
 type DragonFight = Readonly<{
     Dragon: Readonly<Int32Array[]>;
     DragonKilled: boolean;
@@ -85,7 +84,7 @@ type DragonFight = Readonly<{
     PreviouslyKilled: boolean;
 }>;
 
-// root.Data.GameRules
+// Level.Data.GameRules
 type GameRules = Readonly<{
     announceAdvancements: string;
     commandBlockOutput: string;
@@ -124,7 +123,7 @@ type GameRules = Readonly<{
     universalAnger: string;
 }>;
 
-// root.Data.ScheduledEvent
+// Level.Data.ScheduledEvent
 type ScheduledEvent = Readonly<{
     Callback: Readonly<{
         Name: string;
@@ -134,7 +133,7 @@ type ScheduledEvent = Readonly<{
     TriggerTime: number;
 }>;
 
-// root.Data.Version
+// Level.Data.Version
 type Version = Readonly<{
     Id: number;
     Name: string;
@@ -142,7 +141,7 @@ type Version = Readonly<{
     Snapshot: boolean;
 }>;
 
-// root.Data.WorldGenSettings
+// Level.Data.WorldGenSettings
 type WorldGenSettings = Readonly<{
     bonus_chest: boolean;
     dimensions: Readonly<{
