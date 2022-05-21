@@ -3,9 +3,9 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import { Rcon } from 'rcon-client';
 
-import { MaplePlayer } from './MaplePlayer';
-import { MapleServer } from './MapleServer';
-import { Level } from './types/Level';
+import { MaplePlayer } from '../player/MaplePlayer';
+import { MapleServer } from '../server/MapleServer';
+import { Level } from '../types/Level';
 
 const REGEX_ONLINE_PLAYERS = /^There are \d+ of a max of \d+ players online: (.+)$/;
 

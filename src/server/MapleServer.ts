@@ -1,15 +1,23 @@
 import { ChildProcess, spawn } from 'child_process';
+import { convert } from 'encoding-japanese';
 import EventEmitter from 'events';
 import { readFileSync } from 'fs';
 import path from 'path';
 import properties from 'properties';
-import { Rcon } from 'rcon-client';
+import { Rcon, RconOptions } from 'rcon-client';
 import TypedEmitter from 'typed-emitter';
 
-import { parse } from './LogManager';
-import { MapleWorld } from './MapleWorld';
-import { Properties } from './types/Properties';
-import { ServerEvents, ServerOptions } from './types/Server';
+import { emit, parseLog } from '../EventManager';
+import { Properties } from '../types/Properties';
+import { ServerEvents } from '../types/ServerEvents';
+import { MapleWorld } from '../world/MapleWorld';
+
+export type ServerOptions = {
+    rconClient: RconOptions;
+    server: {
+        directoryPath: string;
+    };
+};
 
 export class MapleServer {
     private emitter = new EventEmitter() as TypedEmitter<ServerEvents>;
@@ -55,7 +63,14 @@ export class MapleServer {
             cwd: this.serverDirPath,
         });
         this.process.stdout?.on('data', (logs: Buffer) => {
-            parse(logs, this, this.emitter, this.rconClient);
+            const unicode = convert(logs, {
+                to: 'UNICODE',
+                type: 'string',
+            });
+            process.stdout.write(unicode);
+            parseLog(unicode).forEach((log) => {
+                emit(log, this, this.emitter, this.rconClient);
+            });
         });
     }
 

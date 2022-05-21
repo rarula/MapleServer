@@ -1,4 +1,4 @@
-import { MapleWorld } from './MapleWorld';
+import { MapleWorld } from '../world/MapleWorld';
 
 const REGEX_ONLINE = /^Test passed, count: \d+$/;
 
