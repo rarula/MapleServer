@@ -3,5 +3,6 @@
 /src
 tsconfig.json
 dprint.json
-.eslintrc.json
+.eslintignore
+.eslintrc.js
 .editorconfig
