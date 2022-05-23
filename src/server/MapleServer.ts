@@ -62,13 +62,16 @@ export class MapleServer {
         this.process = spawn('java', args, {
             cwd: this.serverDirPath,
         });
-        this.process.stdout?.on('data', (logs: Buffer) => {
-            const unicode = convert(logs, {
-                to: 'UNICODE',
-                type: 'string',
-            });
-            process.stdout.write(unicode);
-            parseLog(unicode).forEach((log) => {
+
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        process.stdin.pipe(this.process.stdin!);
+        this.process.stderr?.pipe(process.stderr);
+
+        this.process.stdout?.on('data', (data: Buffer) => {
+            const logs = convert(data, { to: 'UNICODE', type: 'string' });
+            process.stdout.write(logs);
+
+            parseLog(logs).forEach((log) => {
                 emit(log, this, this.emitter, this.rconClient);
             });
         });
