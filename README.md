@@ -22,7 +22,8 @@ rcon.password = <password>
 ```
 
 2. Create an instance of MapleServer.  
-   Enter the value of `rcon.password` in `password` and the path to the server directory in `directoryPath`.
+   Enter the value of `rcon.password` in `password` and the path to the server directory in `directoryPath`.  
+   In `args` enter the command options and arguments to start the server.
 ```js
 const { MapleServer } = require('maple-server');
 
@@ -36,16 +37,13 @@ const server = new MapleServer({
         directoryPath: <path>,
     },
 });
-```
 
-3. Start the server. In `args` enter the command options and arguments to start the server.
-```js
 const args = ['-Xmx2G', '-Xms2G', '-jar', 'server.jar'];
 
 server.start(args);
 ```
 
-4. Run it, and if the Minecraft server starts successfully, the setup is complete.
+3. Run it, and if the Minecraft server starts successfully, the setup is complete.
 
 ## Events
 The `MapleServer` class has these events:
