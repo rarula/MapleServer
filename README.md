@@ -6,6 +6,9 @@ Enhance the vanilla server for Minecraft: Java Edition.
 ![License](https://img.shields.io/npm/l/maple-server)
 ![Version](https://img.shields.io/npm/v/maple-server)
 
+![MapleServer v0.1.1](https://user-images.githubusercontent.com/74240663/169854439-385338ae-1ea2-4a9c-99d3-6e10187c72f2.gif)  
+The code for this example can be found in the [Examples](Examples/example.js) directory.
+
 </div>
 
 ## Installation
