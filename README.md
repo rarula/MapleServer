@@ -54,7 +54,7 @@ The `MapleServer` class has these events:
 Called when a player sends a chat.
 | Parameter | Type | Description |
 | :-: | :-: | :-: |
-| player | MaplePlayer | The chat sender |
+| sender | MaplePlayer | The chat sender |
 | message | string | The message sent |
 
 ### playerQuit

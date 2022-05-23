@@ -1,21 +1,37 @@
 import { MaplePlayer } from '../player/MaplePlayer';
 
 export type ServerEvents = {
-    // プレイヤーがチャットを送信した時に呼び出されるイベント
-    playerChat: (player: MaplePlayer, message: string) => void;
+    /**
+     * Called when a player sends a chat.
+     * @param sender The chat sender
+     * @param message The message sent
+     */
+    playerChat: (sender: MaplePlayer, message: string) => void;
 
-    // プレイヤーがサーバーから退出した時に呼び出されるイベント
+    /**
+     * Called when a player leaves a server.
+     * @param player Player who left the server
+     */
     playerQuit: (player: MaplePlayer) => void;
 
-    // プレイヤーがサーバーに参加した時に呼び出されるイベント
+    /**
+     * Called when a player joins a server.
+     * @param player Player who joined the server
+     */
     playerJoin: (player: MaplePlayer) => void;
 
-    // サーバーが停止した時に呼び出されるイベント
+    /**
+     * Called when a server is stopped.
+     */
     serverStop: () => void;
 
-    // サーバーが起動した時に呼び出されるイベント
+    /**
+     * Called when a server starts.
+     */
     serverStart: () => void;
 
-    // サーバーの準備が完了した時に呼び出されるイベント
+    /**
+     * Called when a server is ready.
+     */
     ready: () => void;
 };
