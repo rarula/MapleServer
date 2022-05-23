@@ -1,8 +1,11 @@
-/node_modules
-/test
-/src
-tsconfig.json
+/.vscode
 dprint.json
-.eslintignore
+tsconfig.json
 .eslintrc.js
+.eslintignore
 .editorconfig
+
+/node_modules
+/src
+
+/test
