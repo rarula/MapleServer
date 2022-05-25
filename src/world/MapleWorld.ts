@@ -49,10 +49,10 @@ export class MapleWorld {
     /**
      * Send a command to the server.
      * The command is executed by Rcon, not by the server.
-     * @param command Command to send to the server. Don't prefix the command with /.
+     * @param command Command to send to the server.
      * @returns {Promise<string>} Response from the server.
      */
     public async sendCommand(command: string): Promise<string> {
-        return await this.rconClient.send(`/${command}`);
+        return await this.rconClient.send(`${command}`);
     }
 }
