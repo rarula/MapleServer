@@ -1,6 +1,6 @@
 {
     "name": "maple-server",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Enhance the vanilla server for Minecraft: Java Edition.",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
