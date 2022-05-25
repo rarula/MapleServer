@@ -16,7 +16,7 @@ const REGEX_SERVER_STOP = /^Stopping server$/;
 
 const REGEX_SERVER_START = /^Starting minecraft server version .+$/;
 
-const REGEX_READY = /^Done \([^)]+\)! For help, type "help"$/;
+const REGEX_READY = /^Starting remote control listener$/;
 
 export function parseLog(logs: string): string[] {
     return logs
