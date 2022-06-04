@@ -5,7 +5,7 @@ import { MapleServer } from './server/MapleServer';
 
 const REGEX_CONTENT = /^\[\d{2}:\d{2}:\d{2}] \[[^\]]+]: (.+)/;
 
-const REGEX_PLAYER_CHAT = /^<([^>]+)> (.+)$/;
+const REGEX_PLAYER_CHAT = /^<(.+)> (.+)$/;
 
 const REGEX_PLAYER_QUIT = /^(.+) left the game$/;
 
