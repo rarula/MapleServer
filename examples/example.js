@@ -25,7 +25,7 @@ server.on('playerChat', async (sender, message) => {
                 color: 'gold',
             },
         ];
-        sender.sendCommand(`tellraw @s ${JSON.stringify(text)}`);
+        sender[0].sendCommand(`tellraw @s ${JSON.stringify(text)}`);
         return;
     }
 
@@ -40,14 +40,14 @@ server.on('playerChat', async (sender, message) => {
                 color: 'gold',
             },
         ];
-        sender.sendCommand(`tellraw @s ${JSON.stringify(text)}`);
+        sender[0].sendCommand(`tellraw @s ${JSON.stringify(text)}`);
         return;
     }
 
     if (message === 'info') {
         const properties = server.getProperties();
-        const level = await sender.mapleWorld.getLevel();
-        const players = await sender.mapleWorld.getOnlinePlayers();
+        const level = await sender[0].mapleWorld.getLevel();
+        const players = await sender[0].mapleWorld.getOnlinePlayers();
         const text = [
             {
                 text: ' -> flavor: ',
@@ -74,7 +74,7 @@ server.on('playerChat', async (sender, message) => {
                 color: 'gold',
             },
         ];
-        sender.sendCommand(`tellraw @s ${JSON.stringify(text)}`);
+        sender[0].sendCommand(`tellraw @s ${JSON.stringify(text)}`);
         return;
     }
 });
