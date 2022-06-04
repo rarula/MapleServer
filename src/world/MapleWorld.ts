@@ -33,15 +33,20 @@ export class MapleWorld {
 
     /**
      * Gets a list of all currently logged in players.
-     * @returns {Promise<MaplePlayer[][]>}
+     * @returns {Promise<MaplePlayer[]>}
      */
-    public async getOnlinePlayers(): Promise<MaplePlayer[][]> {
-        const players: MaplePlayer[][] = [];
-        const response = await this.sendCommand('list');
+    public async getOnlinePlayers(): Promise<MaplePlayer[]> {
+        const players: MaplePlayer[] = [];
+        const response = await this.sendCommand('list uuids');
         const names = response.match(REGEX_ONLINE_PLAYERS);
         if (names) {
-            names[1].split(', ').forEach((name) => {
-                players.push(this.matchPlayer(name));
+            const lists = names[1] + '\n';
+            lists.replace(', ', '\n').split('\n').forEach((list) => {
+                const nameIndex = list.indexOf(' ');
+                const player = this.playerMap.get(list.substring(0, nameIndex));
+                if (player) {
+                    players.push(player);
+                }
             });
         }
         return players;
