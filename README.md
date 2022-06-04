@@ -56,20 +56,20 @@ The `MapleServer` class has these events:
 Called when a player sends a chat.
 | Parameter | Type | Description |
 | :-: | :-: | :-: |
-| sender | MaplePlayer | The chat sender |
+| sender | MaplePlayer[] | The chat sender |
 | message | string | The message sent |
 
 ### playerQuit
 Called when a player leaves a server.
 | Parameter | Type | Description |
 | :-: | :-: | :-: |
-| player | MaplePlayer | Player who left the server |
+| player | MaplePlayer[] | Player who left the server |
 
 ### playerJoin
 Called when a player joins a server.
 | Parameter | Type | Description |
 | :-: | :-: | :-: |
-| player | MaplePlayer | Player who joined the server |
+| player | MaplePlayer[] | Player who joined the server |
 
 ### serverStop
 Called when a server is stopped.
