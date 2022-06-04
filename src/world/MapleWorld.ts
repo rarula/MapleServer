@@ -10,6 +10,7 @@ import { Level } from '../types/Level';
 const REGEX_ONLINE_PLAYERS = /^There are \d+ of a max of \d+ players online: (.+)$/;
 
 export class MapleWorld {
+    private playerMap: Map<string, MaplePlayer> = new Map();
     private rconClient: Rcon;
     private worldDirPath = '';
 
@@ -32,16 +33,43 @@ export class MapleWorld {
 
     /**
      * Gets a list of all currently logged in players.
-     * @returns {Promise<MaplePlayer[]>}
+     * @returns {Promise<MaplePlayer[][]>}
      */
-    public async getOnlinePlayers(): Promise<MaplePlayer[]> {
-        const players: MaplePlayer[] = [];
+    public async getOnlinePlayers(): Promise<MaplePlayer[][]> {
+        const players: MaplePlayer[][] = [];
         const response = await this.sendCommand('list');
         const names = response.match(REGEX_ONLINE_PLAYERS);
         if (names) {
             names[1].split(', ').forEach((name) => {
-                players.push(new MaplePlayer(this, name));
+                players.push(this.matchPlayer(name));
             });
+        }
+        return players;
+    }
+
+    /**
+     * Creates a MaplePlayer with the specified name.
+     * @param name Name of the player to create.
+     * @returns {MaplePlayer}
+     */
+    public createPlayer(name: string): MaplePlayer {
+        const player = new MaplePlayer(this, name);
+        this.playerMap.set(name, player);
+        return player;
+    }
+
+    /**
+     * Returns a list of all players with names that may match the given display name.
+     * @param name Partial name to match.
+     * @returns {MaplePlayer[]} A list of all possible matches.
+     */
+    public matchPlayer(name: string): MaplePlayer[] {
+        const players: MaplePlayer[] = [];
+        const keys = this.playerMap.keys();
+        for (const key of keys) {
+            if (name.includes(key)) {
+                players.push(this.playerMap.get(key) as MaplePlayer);
+            }
         }
         return players;
     }

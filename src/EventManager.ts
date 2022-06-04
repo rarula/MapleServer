@@ -1,7 +1,6 @@
 import EventEmitter from 'events';
 import { Rcon } from 'rcon-client';
 
-import { MaplePlayer } from './player/MaplePlayer';
 import { MapleServer } from './server/MapleServer';
 
 const REGEX_CONTENT = /^\[\d{2}:\d{2}:\d{2}] \[[^\]]+]: (.+)/;
@@ -9,6 +8,8 @@ const REGEX_CONTENT = /^\[\d{2}:\d{2}:\d{2}] \[[^\]]+]: (.+)/;
 const REGEX_PLAYER_CHAT = /^<([^>]+)> (.+)$/;
 
 const REGEX_PLAYER_QUIT = /^(.+) left the game$/;
+
+const REGEX_PLAYER_LOGIN = /^(.+)\[[^\]]+] logged in with entity id \d+ at \(.+\)$/;
 
 const REGEX_PLAYER_JOIN = /^(.+) joined the game$/;
 
@@ -37,21 +38,28 @@ export async function emit(log: string, server: MapleServer, emitter: EventEmitt
     // プレイヤーのチャット
     const playerChat = log.match(REGEX_PLAYER_CHAT);
     if (playerChat && world) {
-        emitter.emit('playerChat', new MaplePlayer(world, playerChat[1]), playerChat[2]);
+        emitter.emit('playerChat', world.matchPlayer(playerChat[1]), playerChat[2]);
         return;
     }
 
     // プレイヤーが退出
     const playerQuit = log.match(REGEX_PLAYER_QUIT);
     if (playerQuit && world) {
-        emitter.emit('playerQuit', new MaplePlayer(world, playerQuit[1]));
+        emitter.emit('playerQuit', world.matchPlayer(playerQuit[1]));
+        return;
+    }
+
+    // プレイヤーがログイン
+    const playerLogin = log.match(REGEX_PLAYER_LOGIN);
+    if (playerLogin && world) {
+        world.createPlayer(playerLogin[1]);
         return;
     }
 
     // プレイヤーが参加
     const playerJoin = log.match(REGEX_PLAYER_JOIN);
     if (playerJoin && world) {
-        emitter.emit('playerJoin', new MaplePlayer(world, playerJoin[1]));
+        emitter.emit('playerJoin', world.matchPlayer(playerJoin[1]));
         return;
     }
 
