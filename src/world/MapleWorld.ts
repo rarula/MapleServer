@@ -81,6 +81,6 @@ export class MapleWorld {
      * @returns {Promise<string>} Response from the server.
      */
     public async sendCommand(command: string): Promise<string> {
-        return await this.rconClient.send(`${command}`);
+        return await this.rconClient.send(command);
     }
 }
