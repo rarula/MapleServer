@@ -41,7 +41,7 @@ export class MapleWorld {
         const names = response.match(REGEX_ONLINE_PLAYERS);
         if (names) {
             const lists = names[1] + '\n';
-            lists.replace(', ', '\n').split('\n').forEach((list) => {
+            lists.replace(/, /g, '\n').split('\n').forEach((list) => {
                 const nameIndex = list.indexOf(' ');
                 const player = this.playerMap.get(list.substring(0, nameIndex));
                 if (player) {
