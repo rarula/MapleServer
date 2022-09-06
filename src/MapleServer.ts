@@ -1,5 +1,8 @@
 import { ChildProcess, spawn } from 'child_process';
 import { convert } from 'encoding-japanese';
+import { readFileSync } from 'fs';
+import path from 'path';
+import { parse } from 'properties';
 import { Rcon, RconOptions } from 'rcon-client';
 
 import { getLogRegex } from './flavors/logRegex';
@@ -7,6 +10,7 @@ import { MapleWorld } from './MapleWorld';
 import { Events } from './types/Events';
 import { Flavor } from './types/Flavor';
 import { ILogRegex } from './types/LogRegex';
+import { Properties } from './types/Properties';
 import { UUID } from './types/UUID';
 import { Version } from './types/Version';
 import { EventEmitterWrapper } from './utils/EventEmitterWrapper';
@@ -48,6 +52,12 @@ export class MapleServer extends EventEmitterWrapper<Events> {
 
     public get world(): MapleWorld | undefined {
         return this._world;
+    }
+
+    public getProperties(): Properties {
+        const filePath = path.join(this.dirPath, 'server.properties');
+        const file = readFileSync(filePath, 'utf-8');
+        return parse(file) as Properties;
     }
 
     public async start(options: MapleArgs): Promise<void> {
