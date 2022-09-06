@@ -28,7 +28,7 @@ export class MapleServer extends EventEmitterWrapper<Events> {
     private flavor: Flavor;
     private logRegex: ILogRegex | undefined;
 
-    private _isOnline = false;
+    private _online = false;
     private _world: MapleWorld | undefined;
 
     private rcon: Rcon | undefined;
@@ -42,8 +42,8 @@ export class MapleServer extends EventEmitterWrapper<Events> {
         this.flavor = options.flavor;
     }
 
-    public get isOnline(): boolean {
-        return this._isOnline;
+    public isOnline(): boolean {
+        return this._online;
     }
 
     public get world(): MapleWorld | undefined {
@@ -83,7 +83,7 @@ export class MapleServer extends EventEmitterWrapper<Events> {
 
         const regex = this.logRegex;
         const world = this._world;
-        const online = this._isOnline;
+        const online = this._online;
 
         // RCONのチャットを無視
         if (regex.RCON_CHAT.test(log)) return;
@@ -139,7 +139,7 @@ export class MapleServer extends EventEmitterWrapper<Events> {
         // サーバーが停止
         const serverStop = log.match(regex.SERVER_STOP);
         if (serverStop) {
-            this._isOnline = false;
+            this._online = false;
 
             this.emit('serverStop');
             return;
@@ -150,7 +150,7 @@ export class MapleServer extends EventEmitterWrapper<Events> {
         if (ready && this.proc && this.rcon) {
             await this.rcon.connect();
 
-            this._isOnline = true;
+            this._online = true;
             this._world = new MapleWorld(this.proc, this.rcon);
 
             this.emit('ready');
