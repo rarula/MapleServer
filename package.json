@@ -20,6 +20,7 @@
         "typescript": "^4.8.2"
     },
     "dependencies": {
+        "@xmcl/nbt": "^2.0.3",
         "encoding-japanese": "^2.0.0",
         "properties": "^1.2.1",
         "rcon-client": "^4.2.3"
