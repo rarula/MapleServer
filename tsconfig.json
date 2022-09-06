@@ -11,6 +11,9 @@
         "forceConsistentCasingInFileNames": true,
         "noImplicitOverride": true,
 
+        "paths": {
+            "properties": ["src/@types/properties"]
+        },
         "declaration": false,
         "baseUrl": ".",
         "outDir": "./lib"
