@@ -7,6 +7,8 @@
         "quoteStyle": "alwaysSingle"
     },
     "json": {
+        "indentWidth": 4,
+        "useTabs": false
     },
     "includes": ["**/*.{ts,tsx,js,jsx,cjs,mjs,json}"],
     "excludes": [

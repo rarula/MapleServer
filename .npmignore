@@ -1,12 +1,9 @@
 /.vscode
-dprint.json
-tsconfig.json
-.eslintrc.js
-.eslintignore
-.editorconfig
-
 /node_modules
 /src
 
-/test
-/examples
+.editorconfig
+.eslintignore
+.eslintrc.js
+dprint.json
+tsconfig.json
