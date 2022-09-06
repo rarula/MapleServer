@@ -1,16 +1,35 @@
+import { deserialize } from '@xmcl/nbt';
 import { ChildProcess } from 'child_process';
+import { readFileSync } from 'fs';
+import path from 'path';
 import { Rcon } from 'rcon-client';
 
 import { MaplePlayer } from './MaplePlayer';
+import { MapleServer } from './MapleServer';
+import { Level } from './types/Level';
 import { UUID } from './types/UUID';
 
 export class MapleWorld {
     private playerMap: Map<UUID, MaplePlayer> = new Map();
+    private dirPath: string;
 
     constructor(
+        private server: MapleServer,
+        dirPath: string,
         private proc: ChildProcess,
         private rcon: Rcon,
-    ) {}
+    ) {
+        const level = server.getProperties()['level-name'];
+        this.dirPath = level
+            ? path.join(dirPath, level)
+            : '';
+    }
+
+    public async getLevel(): Promise<Level> {
+        const filePath = path.join(this.dirPath, 'level.dat');
+        const file = readFileSync(filePath);
+        return await deserialize(file);
+    }
 
     public stop(): void {
         if (!this.proc) throw Error('MapleServer is already stopped.');

@@ -161,7 +161,7 @@ export class MapleServer extends EventEmitterWrapper<Events> {
             await this.rcon.connect();
 
             this._online = true;
-            this._world = new MapleWorld(this.proc, this.rcon);
+            this._world = new MapleWorld(this, this.dirPath, this.proc, this.rcon);
 
             this.emit('ready');
             return;
