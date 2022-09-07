@@ -11,18 +11,15 @@ import { UUID } from './types/UUID';
 
 export class MapleWorld {
     private playerMap: Map<UUID, MaplePlayer> = new Map();
-    private dirPath: string;
 
     constructor(
+        private dirPath: string = '',
         private server: MapleServer,
-        dirPath: string,
         private proc: ChildProcess,
         private rcon: Rcon,
     ) {
         const level = server.getProperties()['level-name'];
-        this.dirPath = level
-            ? path.join(dirPath, level)
-            : '';
+        if (level) this.dirPath = path.join(dirPath, level);
     }
 
     public async getLevel(): Promise<Level> {
@@ -33,7 +30,6 @@ export class MapleWorld {
 
     public stop(): void {
         if (!this.proc) throw Error('MapleServer is already stopped.');
-
         this.sendRaw('stop');
     }
 
