@@ -29,7 +29,7 @@ export class MapleWorld {
     }
 
     public stop(): void {
-        if (!this.proc) throw Error('MapleServer is already stopped.');
+        if (!this.server.isOnline()) throw Error('MapleServer is already stopped.');
         this.sendRaw('stop');
     }
 
