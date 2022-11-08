@@ -70,8 +70,8 @@ export class MapleServer extends EventEmitterWrapper<Events> {
         });
 
         if (this.proc.stdin) process.stdin.pipe(this.proc.stdin);
-        if (this.proc.stderr) this.proc.stderr.pipe(process.stderr);
-        if (this.proc.stdout) this.proc.stdout.on('data', this.parseLog.bind(this));
+        this.proc.stderr?.pipe(process.stderr);
+        this.proc.stdout?.on('data', this.parseLog.bind(this));
     }
 
     private parseLog(data: Buffer): void {

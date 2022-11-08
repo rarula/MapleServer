@@ -65,6 +65,6 @@ export class MapleWorld {
     }
 
     public sendRaw(command: string): void {
-        if (this.proc.stdin) this.proc.stdin.write(command + '\n');
+        this.proc.stdin?.write(command + '\n');
     }
 }
